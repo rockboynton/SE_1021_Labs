@@ -1,3 +1,11 @@
+/*
+ * SE1021-021
+ * Winter 2017-18
+ * Lab 1 - WavFile
+ * Name: Rock Boynton
+ * Created: 11/29/17
+ */
+
 package boyntonrl.Lab1;
 
 import edu.msoe.taylor.audio.WavFile;
@@ -8,44 +16,53 @@ import java.util.Scanner;
 
 public class Lab1 {
     private static Scanner input = new Scanner(System.in);
-    private static int choice;
 
     public static void main(String[] args) {
+        int choice;
+        String name;
+//        double frequency;
         do {
             choice = promptUser(input);
             switch (choice) {
                 case 1 :
-                    reverse(input);
+                    name = inputFileName(input);
+                    reverse(name);
                     break;
                 case 2 :
-                    toneAtFrequency(input);
+                    name = inputFileName(input);
+                    double frequency = inputFrequency(input);
+                    toneAtFrequency(name, frequency);
                     break;
                 case 3 :
-                    toneAtFrequencyStereo(input);
+                    name = inputFileName(input);
+                    System.out.print("What do you want the left speaker frequency to be? ");
+                    double leftFrequency = inputFrequency(input);
+                    System.out.print("What do you want the right speaker frequency to be? ");
+                    double rightFrequency = inputFrequency(input);
+                    toneAtFrequencyStereo(name, leftFrequency, rightFrequency);
                     break;
                 default :
                     break;
             }
         } while (choice != 0);
-//        System.out.print(promptUser(input));
     }
 
     /**
      * Method to prompt user, asking their choice of 4 possible options:
-     * 0. Exit
      * 1. Create a reversed .wav file
      * 2. Create a new .wav file containing one second of audio at a given frequency
      * 3. Create  a new .wav file containing one second of audio in stereo
+     * 0. Exit
      * @param input Scanner object
      * @return the option the user chose as an integer
      */
     private static int promptUser(Scanner input) {
         int choice;
         String options = "Options: \n" +
-                "\t0. Exit\n" +
                 "\t1. Create a reversed .wav file\n" +
                 "\t2. Create a new .wav file containing one second of audio at a given frequency\n" +
-                "\t3. Create  a new .wav file containing one second of audio in stereo\n" + // Optional... do if you have time
+                "\t3. Create  a new .wav file containing one second of audio in stereo\n" +
+                "\t0. Exit\n" +
                 "Enter the number of the option you wish to choose: ";
         System.out.print(options);
         choice = input.nextInt();
@@ -54,75 +71,87 @@ public class Lab1 {
 
     /**
      * Method to create a separate .wav file with all of the audio samples placed in reverse order.
-     * @param input Scanner object
+     * The new file is named "(originalName)Rev.wav"
+     * @param name of file inputted by user without the .wav extension to be read and reversed
      */
-    private static void reverse(Scanner input) {
+    private static void reverse(String name) {
         String wavFile; // name with extension
         ArrayList<Double> samples;
-        WavFile origFile;
-        String origName;
-        WavFile revFile;
+        WavFile origFile; // original file to be read
+        WavFile revFile; // reversed file to be written
         String newName; // adds "Rev" and extension (".wav") to new file name
-
-        System.out.print("Enter a filename (without the .wav extension): ");
-        origName = input.next();
-        wavFile = origName + ".wav";
-        newName = origName + "Rev.wav";
-        origFile = new WavFile(wavFile);
+        wavFile = name + ".wav";
+        newName = name + "Rev.wav";
+        origFile = new WavFile(wavFile); // reads the original .wav file
         samples = origFile.getSamples();
-        Collections.reverse(samples); //
-        revFile = new WavFile(newName, origFile.getNumChannels(), origFile.getNumFrames(),
+        Collections.reverse(samples);
+        revFile = new WavFile(newName, origFile.getNumChannels(), origFile.getNumFrames(), // creates new .wav file
                 origFile.getValidBits(), origFile.getSampleRate());
         revFile.setSamples(samples);
         revFile.close();
     }
 
-    private static void toneAtFrequency(Scanner input) {
+    /**
+     * Simple method to get the name of a file from the user without the .wav extension
+     * @param input Scanner object
+     * @return name of a file without the .wav extension
+     */
+    private static String inputFileName (Scanner input) {
+        System.out.print("Enter a filename (without the .wav extension): ");
+        return input.next();
+    }
+
+    /**
+     * Method to create a 1 second .wav file at a specified frequency
+     * @param name of file to be written without the .wav extension
+     * @param frequency of the new file
+     */
+    private static void toneAtFrequency(String name, double frequency) {
         ArrayList<Double> samples = new ArrayList<>();
         String wavFile;
-        String name;
-        double frequency;
         WavFile file;
-
-        System.out.print("Enter a filename (without the .wav extension): ");
-        name = input.next();
         wavFile = name + ".wav";
         file = new WavFile(wavFile, 2, 29016, 16, 22050);
-        System.out.print("Enter a frequency: ");
-        frequency = input.nextDouble();
         for (int i = 0; i < file.getSampleRate(); ++i) {
+            // formula to generate sin wave at the specified frequency
             samples.add(Math.sin((2*Math.PI * i * (frequency/file.getSampleRate()))));
         }
         file.setSamples(samples);
         file.close();
     }
 
-    private static void toneAtFrequencyStereo(Scanner input) {
+    /**
+     * Simple method to get a frequency value from the user.
+     * @param input Scanner object
+     * @return frequency value, as a double
+     */
+    private static double inputFrequency (Scanner input) {
+        System.out.print("Enter a frequency: ");
+        return input.nextDouble();
+    }
+
+    /**
+     * Method to create a 1 second .wav file in stereo at the specified frequency
+     * @param name name of file to be written, without the .wav extension
+     * @param leftFrequency left speaker frequency
+     * @param rightFrequency right speaker frequency
+     */
+    private static void toneAtFrequencyStereo(String name, double leftFrequency, double rightFrequency) {
         ArrayList<Double> samples = new ArrayList<>();
         String wavFile;
-        String name;
-        double frequency1;
-        double frequency2;
         WavFile file;
 
-        System.out.print("Enter a filename (without the .wav extension): ");
-        name = input.next();
         wavFile = name + ".wav";
         file = new WavFile(wavFile, 2, 29016, 16, 22050);
-        System.out.print("Enter a frequency: ");
-        frequency1 = input.nextDouble();
-        System.out.print("Enter a frequency: ");
-        frequency2 = input.nextDouble();
         for (int i = 0; i < file.getSampleRate(); ++i) {
             if (i%2 == 0) {
-                samples.add(Math.sin((2 * Math.PI * i * (frequency1 / file.getSampleRate()))));
+                samples.add(Math.sin((2 * Math.PI * i * (leftFrequency / file.getSampleRate()))));
             } else if (i%2 == 1) {
-                samples.add(Math.sin((2 * Math.PI * i * (frequency2 / file.getSampleRate()))));
+                samples.add(Math.sin((2 * Math.PI * i * (rightFrequency / file.getSampleRate()))));
             }
         }
         file.setSamples(samples);
         file.close();
     }
-
 
 }
