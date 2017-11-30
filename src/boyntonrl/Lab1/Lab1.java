@@ -19,27 +19,17 @@ public class Lab1 {
 
     public static void main(String[] args) {
         int choice;
-        String name;
-//        double frequency;
         do {
             choice = promptUser(input);
             switch (choice) {
                 case 1 :
-                    name = inputFileName(input);
-                    reverse(name);
+                    choice1(input);
                     break;
                 case 2 :
-                    name = inputFileName(input);
-                    double frequency = inputFrequency(input);
-                    toneAtFrequency(name, frequency);
+                    choice2(input);
                     break;
                 case 3 :
-                    name = inputFileName(input);
-                    System.out.print("What do you want the left speaker frequency to be? ");
-                    double leftFrequency = inputFrequency(input);
-                    System.out.print("What do you want the right speaker frequency to be? ");
-                    double rightFrequency = inputFrequency(input);
-                    toneAtFrequencyStereo(name, leftFrequency, rightFrequency);
+                    choice3(input);
                     break;
                 default :
                     break;
@@ -68,6 +58,36 @@ public class Lab1 {
         choice = input.nextInt();
         return choice;
     }
+
+    private static void choice1(Scanner input) {
+        String name;
+
+        name = inputFileName(input);
+        reverse(name);
+    }
+
+    private static void choice2(Scanner input) {
+        String name;
+        double frequency;
+
+        name = inputFileName(input);
+        frequency = inputFrequency(input);
+        toneAtFrequency(name, frequency);
+    }
+
+    private static void choice3(Scanner input) {
+        String name;
+        double leftFrequency;
+        double rightFrequency;
+
+        name = inputFileName(input);
+        System.out.print("What do you want the left speaker frequency to be? ");
+        leftFrequency = inputFrequency(input);
+        System.out.print("What do you want the right speaker frequency to be? ");
+        rightFrequency = inputFrequency(input);
+        toneAtFrequencyStereo(name, leftFrequency, rightFrequency);
+    }
+
 
     /**
      * Method to create a separate .wav file with all of the audio samples placed in reverse order.
