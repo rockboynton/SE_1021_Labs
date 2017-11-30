@@ -27,7 +27,6 @@ public class Lab1 {
                     break;
             }
         } while (choice != 0);
-//        System.out.print(promptUser(input));
     }
 
     /**
