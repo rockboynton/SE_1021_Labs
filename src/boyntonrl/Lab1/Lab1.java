@@ -60,7 +60,7 @@ public class Lab1 {
     }
 
     private static void choice1(Scanner input) {
-        String name;
+        String name; //TODO do another helper for making name
 
         name = inputFileName(input);
         reverse(name);
