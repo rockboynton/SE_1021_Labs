@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- * A simple class for reading, writing, and accessing audio samples
+ * A simple class for reading, writing, and accessing edu.msoe.taylor.audio samples
  * associated with a .wav file.
  *
  * The class is based on a similar class developed by A. Greensted.
@@ -254,10 +254,10 @@ public class WavFile {
     /**
      * Constructor for creating a WavFile object to be written to a file.
      * @param filename The filename of the file this object should be written to
-     * @param numChannels The number of channels of audio
-     * @param numFrames The number of frames of audio
+     * @param numChannels The number of channels of edu.msoe.taylor.audio
+     * @param numFrames The number of frames of edu.msoe.taylor.audio
      * @param validBits The number of valid bits
-     * @param sampleRate The sample rate for the audio samples
+     * @param sampleRate The sample rate for the edu.msoe.taylor.audio samples
      */
     public WavFile(String filename, int numChannels, long numFrames, int validBits,
                    long sampleRate) {
@@ -296,7 +296,7 @@ public class WavFile {
                     8 +     // Data ID and size
                     dataChunkSize;
 
-            // Chunks must be word aligned, so if odd number of audio data bytes
+            // Chunks must be word aligned, so if odd number of edu.msoe.taylor.audio data bytes
             // adjust the main chunk size
             if (dataChunkSize % 2 == 1) {
                 mainChunkSize += 1;
@@ -375,10 +375,10 @@ public class WavFile {
     }
 
     /**
-     * Gets all of the audio samples for the wav file
+     * Gets all of the edu.msoe.taylor.audio samples for the wav file
      * <p>This method should only be called once.</p>
      * <p>Returns null if an IO exception was encountered.</p>
-     * @return All of the audio samples for the wav file or null (if an IOException was thrown)
+     * @return All of the edu.msoe.taylor.audio samples for the wav file or null (if an IOException was thrown)
      */
     public ArrayList<Double> getSamples() {
         ArrayList<Double> samples = new ArrayList<>();
@@ -400,9 +400,9 @@ public class WavFile {
     }
 
     /**
-     * Writes the audio samples passed to the wav file
+     * Writes the edu.msoe.taylor.audio samples passed to the wav file
      * <p>This method should only be called once.</p>
-     * @param samples The audio samples for the wav file
+     * @param samples The edu.msoe.taylor.audio samples for the wav file
      * @return returns true if successful, false if not (IOException was encountered)
      */
     public boolean setSamples(ArrayList<Double> samples) {
@@ -518,7 +518,7 @@ public class WavFile {
     }
 
     /**
-     * Read audio data from the wav file.
+     * Read edu.msoe.taylor.audio data from the wav file.
      * @param sampleBuffer Buffer to hold sample data
      * @param numFramesToRead Maximum number of frames to read
      * @return The number of frames actually read
@@ -543,8 +543,8 @@ public class WavFile {
     }
 
     /**
-     * Reads one audio sample from the wav file.
-     * @return The value of the audio sample
+     * Reads one edu.msoe.taylor.audio sample from the wav file.
+     * @return The value of the edu.msoe.taylor.audio sample
      * @throws IOException Thrown if an input error is encountered
      */
     private long readSample() throws IOException {
@@ -573,7 +573,7 @@ public class WavFile {
     }
 
     /**
-     * Write audio data to the wav file.
+     * Write edu.msoe.taylor.audio data to the wav file.
      * @param sampleBuffer Samples to be written to the file
      * @param numFramesToWrite Maximum number of frames to write
      * @return The number of frames actually written
@@ -598,8 +598,8 @@ public class WavFile {
     }
 
     /**
-     * Writes one audio sample to the wav file.
-     * @param value The value of the audio sample
+     * Writes one edu.msoe.taylor.audio sample to the wav file.
+     * @param value The value of the edu.msoe.taylor.audio sample
      * @throws IOException Thrown if an output error is encountered
      */
     private void writeSample(long value) throws IOException {
@@ -616,3 +616,4 @@ public class WavFile {
     }
 
 }
+
