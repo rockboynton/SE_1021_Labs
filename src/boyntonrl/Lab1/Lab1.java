@@ -60,19 +60,19 @@ public class Lab1 {
     }
 
     private static void choice1(Scanner input) {
-        String name; //TODO do another helper for making name
-
-        name = inputFileName(input);
-        reverse(name);
+//        String name; //TODO do another helper for making name
+//
+//        name = inputFileName(input);
+        reverse(inputFileName(input));
     }
 
     private static void choice2(Scanner input) {
-        String name;
-        double frequency;
+//        String name;
+//        double frequency;
 
-        name = inputFileName(input);
-        frequency = inputFrequency(input);
-        toneAtFrequency(name, frequency);
+//        name = inputFileName(input);
+//        frequency = inputFrequency(input);
+        toneAtFrequency(inputFileName(input), inputFrequency(input));
     }
 
     private static void choice3(Scanner input) {
@@ -80,12 +80,16 @@ public class Lab1 {
         double leftFrequency;
         double rightFrequency;
 
-        name = inputFileName(input);
-        System.out.print("What do you want the left speaker frequency to be? ");
-        leftFrequency = inputFrequency(input);
+//        name = inputFileName(input);
+//        System.out.print("What do you want the left speaker frequency to be? ");
+//        leftFrequency = inputFrequency(input);
+//        System.out.print("What do you want the right speaker frequency to be? ");
+//        rightFrequency = inputFrequency(input);
+//        toneAtFrequencyStereo(name, leftFrequency, rightFrequency);
+
+        System.out.print("What do you want the left speaker frequency to be? "); //TODO ask everything at once seperated by a space
         System.out.print("What do you want the right speaker frequency to be? ");
-        rightFrequency = inputFrequency(input);
-        toneAtFrequencyStereo(name, leftFrequency, rightFrequency);
+        toneAtFrequencyStereo(inputFileName(input), inputFrequency(input), inputFrequency(input));
     }
 
 
@@ -131,7 +135,7 @@ public class Lab1 {
         String wavFile;
         WavFile file;
         wavFile = name + ".wav";
-        file = new WavFile(wavFile, 2, 29016, 16, 22050);
+        file = new WavFile(wavFile, 2, 22050, 16, 22050);
         for (int i = 0; i < file.getSampleRate(); ++i) {
             // formula to generate sin wave at the specified frequency
             samples.add(Math.sin((2*Math.PI * i * (frequency/file.getSampleRate()))));
@@ -162,7 +166,7 @@ public class Lab1 {
         WavFile file;
 
         wavFile = name + ".wav";
-        file = new WavFile(wavFile, 2, 29016, 16, 22050);
+        file = new WavFile(wavFile, 2, 22050, 16, 22050);
         for (int i = 0; i < file.getSampleRate(); ++i) {
             if (i%2 == 0) {
                 samples.add(Math.sin((2 * Math.PI * i * (leftFrequency / file.getSampleRate()))));
