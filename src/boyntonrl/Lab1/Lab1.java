@@ -131,11 +131,6 @@ public class Lab1 {
      * @param frequency of the new file
      */
     private static void toneAtFrequency(String name, double frequency) {
-//        final int NUM_CHANNELS = 2;
-//        final int NUM_FRAMES = 22050;
-//        final int VALID_BITS = 16;
-//        final int SAMPLE_RATE = 22050;
-
         ArrayList<Double> samples = new ArrayList<>();
         WavFile file;
 
