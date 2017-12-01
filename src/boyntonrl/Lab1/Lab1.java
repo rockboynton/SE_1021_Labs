@@ -16,6 +16,10 @@ import java.util.Scanner;
 
 public class Lab1 {
     private static Scanner input = new Scanner(System.in);
+    private static final int NUM_CHANNELS = 2;
+    private static final int NUM_FRAMES = 22050;
+    private static final int VALID_BITS = 16;
+    private static final int SAMPLE_RATE = 22050;
 
     public static void main(String[] args) {
         int choice;
@@ -34,6 +38,9 @@ public class Lab1 {
                 default :
                     break;
             }
+            if ( choice==1 || choice==2 || choice==3 ) {
+                System.out.println("File created successfully.\n");
+            }
         } while (choice != 0);
     }
 
@@ -44,7 +51,7 @@ public class Lab1 {
      * 3. Create  a new .wav file containing one second of audio in stereo
      * 0. Exit
      * @param input Scanner object
-     * @return the option the user chose as an integer
+     * @return the option the user chose as an integer, or -1 if input is not a string
      */
     private static int promptUser(Scanner input) {
         int choice;
@@ -55,23 +62,20 @@ public class Lab1 {
                 "\t0. Exit\n" +
                 "Enter the number of the option you wish to choose: ";
         System.out.print(options);
-        choice = input.nextInt();
+        if (input.hasNextInt()) {
+            choice = input.nextInt();
+        } else {
+            input.next(); // garbage collect that invalid input and move on
+            choice = -1;
+        }
         return choice;
     }
 
     private static void choice1(Scanner input) {
-//        String name; //TODO do another helper for making name
-//
-//        name = inputFileName(input);
         reverse(inputFileName(input));
     }
 
     private static void choice2(Scanner input) {
-//        String name;
-//        double frequency;
-
-//        name = inputFileName(input);
-//        frequency = inputFrequency(input);
         toneAtFrequency(inputFileName(input), inputFrequency(input));
     }
 
@@ -80,16 +84,12 @@ public class Lab1 {
         double leftFrequency;
         double rightFrequency;
 
-//        name = inputFileName(input);
-//        System.out.print("What do you want the left speaker frequency to be? ");
-//        leftFrequency = inputFrequency(input);
-//        System.out.print("What do you want the right speaker frequency to be? ");
-//        rightFrequency = inputFrequency(input);
-//        toneAtFrequencyStereo(name, leftFrequency, rightFrequency);
-
-        System.out.print("What do you want the left speaker frequency to be? "); //TODO ask everything at once seperated by a space
+        name = inputFileName(input);
+        System.out.print("What do you want the left speaker frequency to be? ");
+        leftFrequency = inputFrequency(input);
         System.out.print("What do you want the right speaker frequency to be? ");
-        toneAtFrequencyStereo(inputFileName(input), inputFrequency(input), inputFrequency(input));
+        rightFrequency = inputFrequency(input);
+        toneAtFrequencyStereo(name, leftFrequency, rightFrequency);
     }
 
 
@@ -131,11 +131,15 @@ public class Lab1 {
      * @param frequency of the new file
      */
     private static void toneAtFrequency(String name, double frequency) {
+//        final int NUM_CHANNELS = 2;
+//        final int NUM_FRAMES = 22050;
+//        final int VALID_BITS = 16;
+//        final int SAMPLE_RATE = 22050;
+
         ArrayList<Double> samples = new ArrayList<>();
-        String wavFile;
         WavFile file;
-        wavFile = name + ".wav";
-        file = new WavFile(wavFile, 2, 22050, 16, 22050);
+
+        file = writeWavFile(name);
         for (int i = 0; i < file.getSampleRate(); ++i) {
             // formula to generate sin wave at the specified frequency
             samples.add(Math.sin((2*Math.PI * i * (frequency/file.getSampleRate()))));
@@ -162,11 +166,9 @@ public class Lab1 {
      */
     private static void toneAtFrequencyStereo(String name, double leftFrequency, double rightFrequency) {
         ArrayList<Double> samples = new ArrayList<>();
-        String wavFile;
         WavFile file;
 
-        wavFile = name + ".wav";
-        file = new WavFile(wavFile, 2, 22050, 16, 22050);
+        file = writeWavFile(name);
         for (int i = 0; i < file.getSampleRate(); ++i) {
             if (i%2 == 0) {
                 samples.add(Math.sin((2 * Math.PI * i * (leftFrequency / file.getSampleRate()))));
@@ -176,6 +178,16 @@ public class Lab1 {
         }
         file.setSamples(samples);
         file.close();
+    }
+
+    /**
+     * Constructs a new WavFile object using default values for parameters and the passed in String for name
+     * @param name of file to be written
+     * @return new WavFile object
+     */
+    private static WavFile writeWavFile(String name) {
+        String wavFile = name + ".wav";                                                         
+        return new WavFile(wavFile, NUM_CHANNELS, NUM_FRAMES, VALID_BITS, SAMPLE_RATE);
     }
 
 }
