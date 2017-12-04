@@ -14,6 +14,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Scanner;
 
+/**
+ * This program makes use of the WavFile class to read and write audio files
+ * @author boyntonrl
+ */
 public class Lab1 {
     private static Scanner input = new Scanner(System.in);
     private static final int NUM_CHANNELS = 2;
@@ -69,14 +73,6 @@ public class Lab1 {
             choice = -1;
         }
         return choice;
-    }
-
-    private static void choice1(Scanner input) {
-        reverse(inputFileName(input));
-    }
-
-    private static void choice2(Scanner input) {
-        toneAtFrequency(inputFileName(input), inputFrequency(input));
     }
 
     /**
