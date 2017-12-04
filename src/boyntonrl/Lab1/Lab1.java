@@ -27,13 +27,13 @@ public class Lab1 {
             choice = promptUser(input);
             switch (choice) {
                 case 1 :
-                    choice1(input);
+                    reverse(inputFileName(input));
                     break;
                 case 2 :
-                    choice2(input);
+                    toneAtFrequency(inputFileName(input), inputFrequency(input));
                     break;
                 case 3 :
-                    choice3(input);
+                    choice3(input); //choice 3 requires a little more logic to implement
                     break;
                 default :
                     break;
@@ -79,6 +79,10 @@ public class Lab1 {
         toneAtFrequency(inputFileName(input), inputFrequency(input));
     }
 
+    /**
+     * This method handles the logic for choice 3.
+     * @param input Scanner object
+     */
     private static void choice3(Scanner input) {
         String name;
         double leftFrequency;
@@ -135,7 +139,7 @@ public class Lab1 {
         WavFile file;
 
         file = writeWavFile(name);
-        for (int i = 0; i < file.getSampleRate(); ++i) {
+        for (int i = 0; i < file.getSampleRate()*NUM_CHANNELS; ++i) {
             // formula to generate sin wave at the specified frequency
             samples.add(Math.sin((2*Math.PI * i * (frequency/file.getSampleRate()))));
         }
@@ -164,7 +168,8 @@ public class Lab1 {
         WavFile file;
 
         file = writeWavFile(name);
-        for (int i = 0; i < file.getSampleRate(); ++i) {
+        for (int i = 0; i < file.getSampleRate()*NUM_CHANNELS; ++i) {
+            // interlacing
             if (i%2 == 0) {
                 samples.add(Math.sin((2 * Math.PI * i * (leftFrequency / file.getSampleRate()))));
             } else if (i%2 == 1) {
