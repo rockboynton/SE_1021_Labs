@@ -66,6 +66,11 @@ public class Book extends Reference{
      */
     @Override
     public String toString() {
-        return "";
+        return "@BOOK { REF" + super.getMyUniqueID() + ",\n" +
+                "author = \"" + super.getAuthor() + "\",\n" +
+                "title = \"" + super.getTitle() + "\",\n" +
+                "publisher = \"" + this.getPublisher() + "\",\n" +
+                "year = \"" + super.getPublicationYear() + "\"\n" +
+                "}\n";
     }
 }

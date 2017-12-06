@@ -34,7 +34,7 @@ public class ReferenceHolder {
      * @param book the book reference to be added
      */
     public void addReference(Book book) {
-
+        references.add(book);
     }
 
     /**
@@ -51,7 +51,7 @@ public class ReferenceHolder {
      */
     @Override
     public String toString() {
-        return super.toString();
+        return "";
     }
 
     /**

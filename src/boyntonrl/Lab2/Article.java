@@ -114,6 +114,12 @@ public class Article extends Reference{
      */
     @Override
     public String toString() {
-        return super.toString();
+        return "@ARTICLE { REF" + super.getMyUniqueID() + ",\n" +
+                "author = \"" + super.getAuthor() + "\",\n" +
+                "title = \"" + super.getTitle() + "\",\n" +
+                "journal = \"" + this.getJournal() + "\",\n" +
+                "pages = \"" + this.getStartingPage() + "-" + this.getEndingPage() + "\",\n" +
+                "year = \"" + super.getPublicationYear() + "\"\n" +
+                "}\n";
     }
 }
