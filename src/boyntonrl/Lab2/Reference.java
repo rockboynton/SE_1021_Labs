@@ -30,7 +30,7 @@ public class Reference {
     /**
      * The unique ID assigned to this instance of the reference
      */
-    private final int myUniqueID;
+    private final String myUniqueID;
 
     /**
      * Year of publication
@@ -53,7 +53,7 @@ public class Reference {
         this.author = author;
         this.title = title;
         this.publicationYear = publicationYear;
-        this.myUniqueID = instanceCount;
+        this.myUniqueID = "" + instanceCount;
         instanceCount++;
     }
 
@@ -69,7 +69,7 @@ public class Reference {
      * Get the unique ID associated with this item
      * @return the unique ID
      */
-    public int getMyUniqueID() {
+    public String getMyUniqueID() {
         return myUniqueID;
     }
 
