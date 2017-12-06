@@ -62,7 +62,7 @@ public class Book extends Reference{
 
     /**
      * Returns a String of information in BibTeX format
-     * @return
+     * @return String of BibTeX information
      */
     @Override
     public String toString() {

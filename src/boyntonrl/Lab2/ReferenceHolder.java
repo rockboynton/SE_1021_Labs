@@ -42,7 +42,7 @@ public class ReferenceHolder {
      * @param article the article reference to be added
      */
     public void addReference(Article article) {
-
+        references.add(article);
     }
 
     /**
@@ -51,7 +51,11 @@ public class ReferenceHolder {
      */
     @Override
     public String toString() {
-        return "";
+        StringBuilder allRefs = new StringBuilder();
+        for (Reference reference : references) {
+            allRefs.append(reference.toString());
+        }
+        return allRefs.toString();
     }
 
     /**
