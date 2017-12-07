@@ -106,6 +106,38 @@ public class Article extends Reference{
     @Override
     public void promptForUpdate(Scanner in) {
         super.promptForUpdate(in);
+
+        System.out.println("Enter the author of the article");
+        this.setAuthor(in.nextLine());
+
+        System.out.println("Enter the title of the article");
+        this.setTitle(in.nextLine());
+
+        System.out.println("Enter the title of the journal.");
+        this.setJournal(in.nextLine());
+
+        System.out.println("Enter the first page of the article.");
+        while(!in.hasNextInt()) {
+            in.next();
+            System.out.println("Enter the first page of the article.");
+        }
+        this.setStartingPage(in.nextInt());
+
+        System.out.println("Enter the last page of the article.");
+        while(!in.hasNextInt()) {
+            in.next();
+            System.out.println("Enter the last page of the article.");
+        }
+        this.setEndingPage(in.nextInt());
+        in.nextLine();
+
+        System.out.println("Enter the copyright year for the article.");
+        while(!in.hasNextInt()) {
+            in.next();
+            System.out.println("Enter the copyright year for the article.");
+        }
+        this.setPublicationYear(in.nextInt());
+        in.nextLine();
     }
 
     /**

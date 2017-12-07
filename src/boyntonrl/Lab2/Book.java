@@ -57,7 +57,23 @@ public class Book extends Reference{
      */
     @Override
     public void promptForUpdate(Scanner in) {
+        super.promptForUpdate(in);
+        System.out.println("Enter the author of the book");
+        this.setAuthor(in.nextLine());
 
+        System.out.println("Enter the title of the book");
+        this.setTitle(in.nextLine());
+
+        System.out.println("Enter the publisher for the book.");
+        this.setPublisher(in.nextLine());
+
+        System.out.println("Enter the copyright year for the book.");
+        while(!in.hasNextInt()) {
+            in.next();
+            System.out.println("Enter the copyright year for the book.");
+        }
+        this.setPublicationYear(in.nextInt());
+        in.nextLine();
     }
 
     /**

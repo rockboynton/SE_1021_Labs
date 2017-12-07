@@ -64,6 +64,6 @@ public class ReferenceHolder {
      * @param in Input stream to read user input
      */
     public void updateReference(String uniqueID, Scanner in) {
-
+        references.get(Integer.parseInt(uniqueID)).promptForUpdate(in);
     }
 }

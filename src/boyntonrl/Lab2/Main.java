@@ -44,7 +44,7 @@ public class Main {
                 references.addReference(article);
             } else if(choice == 3) {
                 System.out.println("Enter the ID of the reference you want to update");
-                String uniqueID = in.nextLine();
+                String uniqueID = in.nextLine(); //TODO is this supposed to be "REF#" or "#"??
                 references.updateReference(uniqueID,in);
             } else if(choice == 4) {
                 System.out.print(references);

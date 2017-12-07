@@ -53,7 +53,7 @@ public class Reference {
         this.author = author;
         this.title = title;
         this.publicationYear = publicationYear;
-        this.myUniqueID = "" + instanceCount;
+        this.myUniqueID = "" + instanceCount; //TODO should id be an int or String?
         instanceCount++;
     }
 
@@ -118,6 +118,7 @@ public class Reference {
      * @param in Input stream to read user input
      */
     public void promptForUpdate(Scanner in) {
+        System.out.println("Please update...");
 
     }
 }
