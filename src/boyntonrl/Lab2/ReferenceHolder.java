@@ -65,5 +65,5 @@ public class ReferenceHolder {
      */
     public void updateReference(String uniqueID, Scanner in) {
         references.get(Integer.parseInt(uniqueID)).promptForUpdate(in);
-    }
+    } 
 }
