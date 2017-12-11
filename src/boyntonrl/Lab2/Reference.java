@@ -53,7 +53,7 @@ public class Reference {
         this.author = author;
         this.title = title;
         this.publicationYear = publicationYear;
-        this.myUniqueID = "" + instanceCount;
+        this.myUniqueID = "REF" + instanceCount; //TODO add REF
         instanceCount++;
     }
 

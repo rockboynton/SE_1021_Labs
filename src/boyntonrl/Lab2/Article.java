@@ -146,7 +146,7 @@ public class Article extends Reference{
      */
     @Override
     public String toString() {
-        return "@ARTICLE { REF" + super.getMyUniqueID() + ",\n" +
+        return "@ARTICLE { " + super.getMyUniqueID() + ",\n" +
                 "author = \"" + super.getAuthor() + "\",\n" +
                 "title = \"" + super.getTitle() + "\",\n" +
                 "journal = \"" + this.getJournal() + "\",\n" +
