@@ -43,7 +43,7 @@ public class Main {
                 Article article = createArticleEntry(in);
                 references.addReference(article);
             } else if(choice == 3) {
-                System.out.println("Enter the ID number of the reference you want to update");
+                System.out.println("Enter the ID of the reference you want to update");
                 String uniqueID = in.nextLine();
                 references.updateReference(uniqueID,in);
             } else if(choice == 4) {

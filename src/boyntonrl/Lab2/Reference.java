@@ -102,7 +102,9 @@ public class Reference {
      * @param publicationYear year item was published. Must be positive, or change will not occur
      */
     public void setPublicationYear(int publicationYear) {
-        this.publicationYear = publicationYear;
+        if (publicationYear > 0) {
+            this.publicationYear = publicationYear;
+        }
     }
 
     /**
@@ -118,7 +120,7 @@ public class Reference {
      * @param in Input stream to read user input
      */
     public void promptForUpdate(Scanner in) {
-        System.out.println("Please update...");
+        System.out.println("Please update the following attributes..."); // subclasses do the rest of the work
 
     }
 }

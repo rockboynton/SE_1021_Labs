@@ -46,8 +46,16 @@ public class Article extends Reference{
     public Article(String author, String title, int publicationYear, String journal, int startingPage, int endingPage) {
         super(author, title, publicationYear);
         this.journal = journal;
-        this.startingPage = startingPage;
-        this.endingPage = endingPage;
+        if (startingPage > 0) {
+            this.startingPage = startingPage;
+        } else {
+            this.startingPage = 0;
+        }
+        if (endingPage > this.startingPage) {
+            this.endingPage = endingPage;
+        } else {
+            this.endingPage = this.startingPage + 1;
+        }
     }
 
     /**
@@ -60,10 +68,12 @@ public class Article extends Reference{
 
     /**
      * Sets the ending page of the article. If the desired ending page is less than the starting page, no change is made.
-     * @param endingPage
+     * @param endingPage // Page number of the last page of the article
      */
     public void setEndingPage(int endingPage) {
-        this.endingPage = endingPage;
+        if (endingPage > this.startingPage) {
+            this.endingPage = endingPage;
+        }
     }
 
     /**
@@ -96,7 +106,9 @@ public class Article extends Reference{
      * @param startingPage Page number of the first page of the article.
      */
     public void setStartingPage(int startingPage) {
-        this.startingPage = startingPage;
+        if ( (startingPage > 0) && (startingPage < this.endingPage) ) {
+            this.startingPage = startingPage;
+        }
     }
 
     /**

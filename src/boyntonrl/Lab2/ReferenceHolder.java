@@ -64,6 +64,13 @@ public class ReferenceHolder {
      * @param in Input stream to read user input
      */
     public void updateReference(String uniqueID, Scanner in) {
-        references.get(Integer.parseInt(uniqueID)).promptForUpdate(in);
+        // if the user inputted the full name e.g. "REF0" (short-circuits if it isn't long enough)
+        if ( (uniqueID.length() >= 3) && uniqueID.startsWith("REF")) {
+            references.get(Integer.parseInt(uniqueID.substring(3))).promptForUpdate(in);
+        // if the user only inputted the number
+        // lambda expression found on stack overflow
+        } else if (uniqueID.chars().allMatch( Character::isDigit ) && Integer.parseInt(uniqueID) < references.size()) {
+            references.get(Integer.parseInt(uniqueID)).promptForUpdate(in);
+        } // does nothing if input was not valid
     } 
 }
