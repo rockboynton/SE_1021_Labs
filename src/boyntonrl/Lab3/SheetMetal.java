@@ -1,5 +1,7 @@
 package boyntonrl.Lab3;
 
+import java.text.DecimalFormat;
+
 public class SheetMetal implements Part {
 
     public static final double LBS_MULTIPLIER = 0.1;
@@ -17,21 +19,28 @@ public class SheetMetal implements Part {
 
     @Override
     public double getCost() {
-        return 0;
+        return USD_MULTIPLIER * thicknessInches * widthInches * lengthInches;
     }
 
     @Override
     public String getName() {
-        return null;
+        return lengthInches + "x" + widthInches + "x" + thicknessInches + " sheet";
     }
 
     @Override
     public double getWeight() {
-        return 0;
+        return LBS_MULTIPLIER * thicknessInches * widthInches * lengthInches;
     }
 
     @Override
     public void printBillOfMaterials() {
-
+        System.out.println("==========================\n" +
+                getName() + "\n" +
+                "==========================\n" +
+                "Length: " + lengthInches + " inches\n" +
+                "Width: " + widthInches + "inches\n" +
+                "Thickness: " + thicknessInches + "inches\n" +
+                "Cost: " + money.format(getCost()) + "\n" +
+                "Weight: " + getWeight() + "lbs\n" );
     }
 }

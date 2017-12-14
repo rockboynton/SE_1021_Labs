@@ -15,21 +15,27 @@ public class Bolt implements Part {
 
     @Override
     public double getCost() {
-        return 0;
+        return USD_MULTIPLIER * diameterInches * lengthInches;
     }
 
     @Override
     public String getName() {
-        return null;
+        return diameterInches + "x" + lengthInches + " bolt";
     }
 
     @Override
     public double getWeight() {
-        return 0;
+        return LBS_MULTIPLIER * Math.pow(diameterInches, 2) * lengthInches;
     }
 
     @Override
     public void printBillOfMaterials() {
-
+        System.out.println("==========================\n" +
+                getName() + "\n" +
+                "==========================\n" +
+                "Diameter: " + diameterInches + "inches\n" +
+                "Length: " + lengthInches + " inches\n" +
+                "Cost: " + money.format(getCost()) + "\n" +
+                "Weight: " + getWeight() + "lbs\n" );
     }
 }

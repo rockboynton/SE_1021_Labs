@@ -109,7 +109,7 @@ public class Main {
         System.out.println("Enter the title of the journal.");
         String journal = in.nextLine();
 
-        System.out.println("Enter the first page of the article.");
+        System.out.println("Enter the first page of the article."); //TODO if the starting page is not valid, make it a 1
         while(!in.hasNextInt()) {
             in.next();
             System.out.println("Enter the first page of the article.");

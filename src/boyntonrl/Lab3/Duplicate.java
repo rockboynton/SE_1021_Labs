@@ -9,8 +9,8 @@ public class Duplicate implements Part {
     public static final int USD_THRESHOLD1 = 5;
     public static final int USD_THRESHOLD2 = 10;
 
-    private final DecimalFormat weightFormat = new DecimalFormat();
-    private final DecimalFormat costFormat = new DecimalFormat();
+    private final DecimalFormat weightFormat = new DecimalFormat("0.00");
+    private final DecimalFormat costFormat = new DecimalFormat("lbs");
 
     private Part identicalPart;
     private int numDuplicates;
@@ -23,21 +23,37 @@ public class Duplicate implements Part {
 
     @Override
     public double getCost() {
-        return 0;
+        double cost = numDuplicates * identicalPart.getCost();
+        if (numDuplicates >= USD_THRESHOLD2) {
+            cost *= REDUCTION_FACTOR2;
+        } else if (cost >= USD_THRESHOLD1) {
+            cost *= REDUCTION_FACTOR1;
+        }
+        return cost;
     }
 
     @Override
     public String getName() {
-        return null;
+        return numDuplicates + identicalPart.getName() + "s";
     }
 
     @Override
     public double getWeight() {
-        return 0;
+        return numDuplicates * identicalPart.getWeight();
     }
 
     @Override
     public void printBillOfMaterials() {
+        System.out.println("==========================\n" +
+                getName() + "\n" +
+                "==========================\n" +
+                "Duplicate part: " + identicalPart.getName() + " \n" + //TODO get rid of number format in other classes
+                "Copies: " + numDuplicates + "\n" +
+                "Individual cost: " + costFormat.format(identicalPart.getCost()) + "\n" +
+                "Individual Weight: " + weightFormat.format(identicalPart.getWeight()) + "\n\n" +
+                "Total cost: " + costFormat.format(this.getCost()) + "\n" +
+                "Total weight: " + weightFormat.format(this.getWeight()) + "\n\n");
+        identicalPart.printBillOfMaterials();
 
     }
 }

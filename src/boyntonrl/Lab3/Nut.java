@@ -13,21 +13,26 @@ public class Nut implements Part {
 
     @Override
     public double getCost() {
-        return 0;
+        return USD_MULTIPLIER * diameterInches;
     }
 
     @Override
     public String getName() {
-        return null;
+        return diameterInches + " inch nut";
     }
 
     @Override
     public double getWeight() {
-        return 0;
+        return LBS_MULTIPLIER * Math.pow(diameterInches, 2);
     }
 
     @Override
     public void printBillOfMaterials() {
-
+        System.out.println("==========================\n" +
+                getName() + "\n" +
+                "==========================\n" +
+                "Diameter: " + diameterInches + " inches\n" +
+                "Cost: " + money.format(getCost()) + "\n" +
+                "Weight: " + getWeight() + "lbs\n" );
     }
 }
