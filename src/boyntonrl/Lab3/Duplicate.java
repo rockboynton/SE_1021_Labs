@@ -4,9 +4,28 @@ import java.text.DecimalFormat;
 
 public class Duplicate implements Part {
 
+    /**
+     * Used to calculate the price of the duplicate objects. If there are at least USD_THRESHOLD1 duplicate objects,
+     * the final price is reduced by this reduction factor.
+     */
     public static final double REDUCTION_FACTOR1 = 0.95;
+
+    /**
+     * Used to calculate the price of the duplicate objects. If there are at least USD_THRESHOLD2 duplicate objects, the final price
+     * is reduced by this reduction factor.
+     */
     public static final double REDUCTION_FACTOR2 = 0.9;
+
+    /**
+     * Used to calculate the price of the duplicate objects. If there are at least this many objects, the price is
+     * reduced by REDUCTION_FACTOR1
+     */
     public static final int USD_THRESHOLD1 = 5;
+
+    /**
+     * Used to calculate the price of the duplicate objects. If there are at least this many objects, the price is
+     * reduced by REDUCTION_FACTOR2
+     */
     public static final int USD_THRESHOLD2 = 10;
 
     private final DecimalFormat weightFormat = new DecimalFormat("0.00");
@@ -16,6 +35,11 @@ public class Duplicate implements Part {
     private int numDuplicates;
 
 
+    /**
+     * Constructor for the Duplicate object.
+     * @param identicalPart the type of part that this object contains
+     * @param numDuplicates the number of duplicate objects
+     */
     public Duplicate(Part identicalPart, int numDuplicates) {
         this.identicalPart = identicalPart;
         this.numDuplicates = numDuplicates;
@@ -42,6 +66,11 @@ public class Duplicate implements Part {
         return numDuplicates * identicalPart.getWeight();
     }
 
+    /**
+     * Prints the bill for the duplicate objects.
+     * Lists the name, number of copies, individual cost, the individual weight, the total cost, and the total weight.
+     * It then calls the printBillOfMaterials for the individual part.
+     */
     @Override
     public void printBillOfMaterials() {
         System.out.println("==========================\n" +
@@ -52,7 +81,7 @@ public class Duplicate implements Part {
                 "Individual cost: " + costFormat.format(identicalPart.getCost()) + "\n" +
                 "Individual Weight: " + weightFormat.format(identicalPart.getWeight()) + "\n\n" +
                 "Total cost: " + costFormat.format(this.getCost()) + "\n" +
-                "Total weight: " + weightFormat.format(this.getWeight()) + "\n\n");
+                "Total weight: " + weightFormat.format(this.getWeight()) + "lbs\n\n");
         identicalPart.printBillOfMaterials();
 
     }

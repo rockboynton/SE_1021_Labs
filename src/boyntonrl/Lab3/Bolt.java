@@ -2,12 +2,24 @@ package boyntonrl.Lab3;
 
 public class Bolt implements Part {
 
+    /**
+     * Number used to calculate the weight of the bolt
+     */
     public static final double LBS_MULTIPLIER = 0.05;
+
+    /**
+     * Number used to calculate the price of the bolt
+     */
     public static final double USD_MULTIPLIER = 1.00;
 
     private double diameterInches;
     private double lengthInches;
 
+    /**
+     * Constructor for the bolt, which has a length and diameter
+     * @param diameterInches the diameter of the bolt in inches
+     * @param lengthInches the length of the bolt in inches
+     */
     public Bolt(double diameterInches, double lengthInches) {
         this.diameterInches = diameterInches;
         this.lengthInches = lengthInches;
@@ -28,6 +40,10 @@ public class Bolt implements Part {
         return LBS_MULTIPLIER * Math.pow(diameterInches, 2) * lengthInches;
     }
 
+    /**
+     * Prints the bill for the bolt.
+     * Lists the name, diameter, length, cost, and weight.
+     */
     @Override
     public void printBillOfMaterials() {
         System.out.println("==========================\n" +
