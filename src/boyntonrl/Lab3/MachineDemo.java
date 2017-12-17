@@ -6,8 +6,6 @@
  */
 package boyntonrl.Lab3;
 
-import java.util.Scanner;
-
 public class MachineDemo {
     /**
      * A simple example driver class for the Bill of Materials generator lab.
