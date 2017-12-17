@@ -4,12 +4,23 @@ import java.text.DecimalFormat;
 
 public interface Part {
 
+    /**
+     * Formats the cost of each part
+     */
      DecimalFormat money = new DecimalFormat("$0.00");
-     DecimalFormat weight = new DecimalFormat("#.###");
+
+    /**
+     * Formats the weight of each part
+     */
+    DecimalFormat weight = new DecimalFormat("#.###");
 
      double getCost();
      String getName();
      double getWeight();
-     void printBillOfMaterials();
+
+    /**
+     * Prints a bill of materials for a part.
+     */
+    void printBillOfMaterials();
 
 }
