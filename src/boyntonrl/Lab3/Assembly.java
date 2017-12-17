@@ -72,7 +72,6 @@ public class Assembly implements Part {
         System.out.println("Total cost: " + costFormat.format(this.getCost()) + "\n" +
                            "Total weight: " + weightFormat.format(this.getWeight()) + " lbs\n"  );
         printIndividual();
-        }
     }
 
     private void printSummary() {
