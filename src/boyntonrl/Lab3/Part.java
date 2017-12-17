@@ -5,7 +5,7 @@ import java.text.DecimalFormat;
 public interface Part {
 
      DecimalFormat money = new DecimalFormat("$0.00");
-     DecimalFormat weight = new DecimalFormat("0.0#");
+     DecimalFormat weight = new DecimalFormat("#.###");
 
      double getCost();
      String getName();

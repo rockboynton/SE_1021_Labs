@@ -28,8 +28,8 @@ public class Duplicate implements Part {
      */
     public static final int USD_THRESHOLD2 = 10;
 
-    private final DecimalFormat weightFormat = new DecimalFormat("0.00");
-    private final DecimalFormat costFormat = new DecimalFormat("lbs");
+    private final DecimalFormat weightFormat = new DecimalFormat("0.0##");
+    private final DecimalFormat costFormat = new DecimalFormat("$0.00");
 
     private Part identicalPart;
     private int numDuplicates;
@@ -58,7 +58,7 @@ public class Duplicate implements Part {
 
     @Override
     public String getName() {
-        return numDuplicates + identicalPart.getName() + "s";
+        return numDuplicates + " " + identicalPart.getName() + "s";
     }
 
     @Override
@@ -67,9 +67,8 @@ public class Duplicate implements Part {
     }
 
     /**
-     * Prints the bill for the duplicate objects.
-     * Lists the name, number of copies, individual cost, the individual weight, the total cost, and the total weight.
-     * It then calls the printBillOfMaterials for the individual part.
+     * Prints the bill for the duplicate parts. It first prints a summary of the part (including name, cost, and weight
+     * for each part), then prints the full bill of materials for the individual part.
      */
     @Override
     public void printBillOfMaterials() {
@@ -79,9 +78,9 @@ public class Duplicate implements Part {
                 "Duplicate part: " + identicalPart.getName() + " \n" + //TODO get rid of number format in other classes
                 "Copies: " + numDuplicates + "\n" +
                 "Individual cost: " + costFormat.format(identicalPart.getCost()) + "\n" +
-                "Individual Weight: " + weightFormat.format(identicalPart.getWeight()) + "\n\n" +
+                "Individual Weight: " + weightFormat.format(identicalPart.getWeight()) + " lbs\n\n" +
                 "Total cost: " + costFormat.format(this.getCost()) + "\n" +
-                "Total weight: " + weightFormat.format(this.getWeight()) + "lbs\n\n");
+                "Total weight: " + weightFormat.format(this.getWeight()) + " lbs\n");
         identicalPart.printBillOfMaterials();
 
     }

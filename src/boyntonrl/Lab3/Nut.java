@@ -48,6 +48,6 @@ public class Nut implements Part {
                 "==========================\n" +
                 "Diameter: " + diameterInches + " inches\n" +
                 "Cost: " + money.format(getCost()) + "\n" +
-                "Weight: " + getWeight() + "lbs\n" );
+                "Weight: " + weight.format(getWeight()) + " lbs\n" );
     }
 }

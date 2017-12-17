@@ -1,5 +1,7 @@
 package boyntonrl.Lab3;
 
+import java.text.DecimalFormat;
+
 public class Bolt implements Part {
 
     /**
@@ -14,7 +16,6 @@ public class Bolt implements Part {
 
     private double diameterInches;
     private double lengthInches;
-
     /**
      * Constructor for the bolt, which has a length and diameter
      * @param diameterInches the diameter of the bolt in inches
@@ -49,9 +50,9 @@ public class Bolt implements Part {
         System.out.println("==========================\n" +
                 getName() + "\n" +
                 "==========================\n" +
-                "Diameter: " + diameterInches + "inches\n" +
+                "Diameter: " + diameterInches + " inches\n" +
                 "Length: " + lengthInches + " inches\n" +
                 "Cost: " + money.format(getCost()) + "\n" +
-                "Weight: " + getWeight() + "lbs\n" );
+                "Weight: " + weight.format(getWeight()) + " lbs\n" );
     }
 }

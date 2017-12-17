@@ -55,9 +55,9 @@ public class SheetMetal implements Part {
                 getName() + "\n" +
                 "==========================\n" +
                 "Length: " + lengthInches + " inches\n" +
-                "Width: " + widthInches + "inches\n" +
-                "Thickness: " + thicknessInches + "inches\n" +
+                "Width: " + widthInches + " inches\n" +
+                "Thickness: " + thicknessInches + " inches\n" +
                 "Cost: " + money.format(getCost()) + "\n" +
-                "Weight: " + getWeight() + "lbs\n" );
+                "Weight: " + weight.format(getWeight()) + " lbs\n" );
     }
 }
