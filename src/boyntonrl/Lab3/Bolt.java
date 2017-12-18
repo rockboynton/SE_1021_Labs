@@ -1,7 +1,18 @@
+/*
+ * SE1021 - 021
+ * Winter 2017
+ * Lab: Lab 3 Interfaces
+ * Name: Rock Boynton
+ * Created: 12/13/17
+ */
+
 package boyntonrl.Lab3;
 
 import java.text.DecimalFormat;
 
+/**
+ * A class to represent bolt objects.
+ */
 public class Bolt implements Part {
 
     /**
@@ -13,6 +24,9 @@ public class Bolt implements Part {
      * Number used to calculate the price of the bolt
      */
     public static final double USD_MULTIPLIER = 1.00;
+
+    private final DecimalFormat costFormat = new DecimalFormat("$0.00");
+    private final DecimalFormat weightFormat = new DecimalFormat("#.###");
 
     private double diameterInches;
     private double lengthInches;
@@ -52,7 +66,7 @@ public class Bolt implements Part {
                 "==========================\n" +
                 "Diameter: " + diameterInches + " inches\n" +
                 "Length: " + lengthInches + " inches\n" +
-                "Cost: " + money.format(getCost()) + "\n" +
-                "Weight: " + weight.format(getWeight()) + " lbs\n" );
+                "Cost: " + costFormat.format(getCost()) + "\n" +
+                "Weight: " + weightFormat.format(getWeight()) + " lbs\n");
     }
 }

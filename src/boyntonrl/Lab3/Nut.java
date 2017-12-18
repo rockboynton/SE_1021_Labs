@@ -1,5 +1,18 @@
+/*
+ * SE1021 - 021
+ * Winter 2017
+ * Lab: Lab 3 Interfaces
+ * Name: Rock Boynton
+ * Created: 12/13/17
+ */
+
 package boyntonrl.Lab3;
 
+import java.text.DecimalFormat;
+
+/**
+ * A class to represent nut objects.
+ */
 public class Nut implements Part {
 
     /**
@@ -11,6 +24,9 @@ public class Nut implements Part {
      * Number used to calculate the price of the nut
      */
     public static final double USD_MULTIPLIER = 0.50;
+
+    private final DecimalFormat costFormat = new DecimalFormat("$0.00");
+    private final DecimalFormat weightFormat = new DecimalFormat("#.###");
 
     private double diameterInches;
 
@@ -47,7 +63,7 @@ public class Nut implements Part {
                 getName() + "\n" +
                 "==========================\n" +
                 "Diameter: " + diameterInches + " inches\n" +
-                "Cost: " + money.format(getCost()) + "\n" +
-                "Weight: " + weight.format(getWeight()) + " lbs\n" );
+                "Cost: " + costFormat.format(getCost()) + "\n" +
+                "Weight: " + weightFormat.format(getWeight()) + " lbs\n");
     }
 }

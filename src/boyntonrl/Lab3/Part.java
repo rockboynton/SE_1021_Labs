@@ -1,22 +1,22 @@
+/*
+ * SE1021 - 021
+ * Winter 2017
+ * Lab: Lab 3 Interfaces
+ * Name: Rock Boynton
+ * Created: 12/13/17
+ */
+
 package boyntonrl.Lab3;
 
-import java.text.DecimalFormat;
 
+/**
+ * This is an interface to allow generic information about a part to be accessed.
+ */
 public interface Part {
 
-    /**
-     * Formats the cost of each part
-     */
-     DecimalFormat money = new DecimalFormat("$0.00");
-
-    /**
-     * Formats the weight of each part
-     */
-    DecimalFormat weight = new DecimalFormat("#.###");
-
-     double getCost();
-     String getName();
-     double getWeight();
+    double getCost();
+    String getName();
+    double getWeight();
 
     /**
      * Prints a bill of materials for a part.

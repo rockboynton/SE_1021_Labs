@@ -1,7 +1,18 @@
+/*
+ * SE1021 - 021
+ * Winter 2017
+ * Lab: Lab 3 Interfaces
+ * Name: Rock Boynton
+ * Created: 12/13/17
+ */
+
 package boyntonrl.Lab3;
 
 import java.text.DecimalFormat;
 
+/**
+ * A class to represent sheet metal objects.
+ */
 public class SheetMetal implements Part {
 
     /**
@@ -13,6 +24,9 @@ public class SheetMetal implements Part {
      * Number used to calculate the price of the sheet metal
      */
     public static final double USD_MULTIPLIER = 0.50;
+
+    private final DecimalFormat costFormat = new DecimalFormat("$0.00");
+    private final DecimalFormat weightFormat = new DecimalFormat("#.###");
 
     private double lengthInches;
     private double thicknessInches;
@@ -57,7 +71,7 @@ public class SheetMetal implements Part {
                 "Length: " + lengthInches + " inches\n" +
                 "Width: " + widthInches + " inches\n" +
                 "Thickness: " + thicknessInches + " inches\n" +
-                "Cost: " + money.format(getCost()) + "\n" +
-                "Weight: " + weight.format(getWeight()) + " lbs\n" );
+                "Cost: " + costFormat.format(getCost()) + "\n" +
+                "Weight: " + weightFormat.format(getWeight()) + " lbs\n");
     }
 }

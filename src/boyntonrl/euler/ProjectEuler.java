@@ -180,6 +180,7 @@ public class ProjectEuler {
     }
 
     public static long largestProductInAGrid(String n) {
-        for(int i = 0; i )
+//        for(int i = 0; i )
+        return 0;
     }
 }
