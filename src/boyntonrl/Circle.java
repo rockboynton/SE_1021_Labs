@@ -1,4 +1,6 @@
 package boyntonrl;
 
-public class Circle {
+public abstract class Circle extends Shape{
+
+    double radius;
 }

@@ -31,5 +31,21 @@ public abstract class Shape {
     public void setColor(java.awt.Color color) {
         this.color = color;
     }
+
+    /**
+     * Set the pen color on the WinPlotter object to match the current color of the shape.
+     * @param plotter reference to a WinPlotter whose pen color should be set
+     */
+    public void setPenColor(edu.msoe.se1010.winPlotter.WinPlotter plotter) {
+        //TODO
+    }
+
+    /**
+     * Draws the Shape. Abstract, so implementation deferred to sub classes
+     * @param plotter reference to a WinPlotter object used for drawing
+     */
+    public abstract void draw(edu.msoe.se1010.winPlotter.WinPlotter plotter);
+
+
 }
 
