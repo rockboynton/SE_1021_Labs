@@ -1,4 +1,38 @@
 package boyntonrl;
 
-public class LabeledTriangle {
+import edu.msoe.se1010.winPlotter.WinPlotter;
+
+import java.awt.*;
+
+public class LabeledTriangle extends Triangle {
+
+    private String name;
+
+    /**
+     * Constructor -- creates the LabeledTriangle
+     * @param x - cartesian x-origin of this LabeledTriangle
+     * @param y - cartesian x-origin of this LabeledTriangle
+     * @param base - base (along x-axis) of this LabeledTriangle
+     * @param height - height (along y-axis) of this LabeledTriangle
+     * @param color - the java.awt.Color for this LabeledTriangle
+     * @param name - descriptive name for this LabeledTriangle
+     */
+    public LabeledTriangle(double x,
+                           double y,
+                           double base,
+                           double height,
+                           Color color,
+                           String name) {
+        super(x, y, base, height, color);
+        this.name = name;
+    }
+
+    /**
+     * Draws the LabeledTriangle, with the name printed near the base. To draw the sides and base
+     * of the LabeledTriangle, just call the Triangle's draw() method.
+     * @param plotter reference to a WinPlotter object used for drawing
+     */
+    public void draw(WinPlotter plotter) {
+        // TODO
+    }
 }

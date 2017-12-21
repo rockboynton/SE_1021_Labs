@@ -1,5 +1,7 @@
 package boyntonrl;
 
+import edu.msoe.se1010.winPlotter.WinPlotter;
+
 import java.awt.Color;
 
 /**
@@ -36,7 +38,7 @@ public abstract class Shape {
      * Set the pen color on the WinPlotter object to match the current color of the shape.
      * @param plotter reference to a WinPlotter whose pen color should be set
      */
-    public void setPenColor(edu.msoe.se1010.winPlotter.WinPlotter plotter) {
+    public void setPenColor(WinPlotter plotter) {
         //TODO
     }
 

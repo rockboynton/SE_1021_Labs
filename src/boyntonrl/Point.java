@@ -1,4 +1,28 @@
 package boyntonrl;
 
-public class Point {
+import edu.msoe.se1010.winPlotter.WinPlotter;
+
+import java.awt.*;
+
+public class Point extends Shape {
+
+    /**
+     *
+     * @param x - cartesian x-origin of this Point
+     * @param y - cartesian x-origin of this Point
+     * @param color - the java.awt.Color for this Point
+     */
+    public Point(double x,
+                 double y,
+                 Color color) {
+        super(x, y, color);
+    }
+
+    /**
+     * Draws the Shape. Abstract, so implementation deferred to sub classes
+     * @param plotter reference to a WinPlotter object used for drawing
+     */
+    public void draw(WinPlotter plotter) {
+        // TODO
+    }
 }
