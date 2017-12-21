@@ -19,10 +19,11 @@ public class Point extends Shape {
     }
 
     /**
-     * Draws the Shape. Abstract, so implementation deferred to sub classes
+     * Draws the point.
      * @param plotter reference to a WinPlotter object used for drawing
      */
     public void draw(WinPlotter plotter) {
-        // TODO
+        super.setPenColor(plotter);
+        plotter.drawPoint(x, y);
     }
 }

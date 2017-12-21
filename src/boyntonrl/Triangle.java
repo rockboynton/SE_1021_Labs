@@ -34,6 +34,11 @@ public class Triangle extends Shape {
      * @param plotter reference to a WinPlotter object used for drawing
      */
     public void draw(WinPlotter plotter) {
-        // TODO
+        super.setPenColor(plotter);
+        plotter.moveTo(x, y);
+        plotter.drawTo(x + base, y);
+        plotter.drawTo(x + base/2, y + height);
+        plotter.drawTo(x, y);
+
     }
 }

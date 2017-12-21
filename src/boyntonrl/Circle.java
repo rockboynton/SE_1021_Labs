@@ -3,6 +3,7 @@ package boyntonrl;
 import edu.msoe.se1010.winPlotter.WinPlotter;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 public class Circle extends Shape{
 
@@ -33,5 +34,19 @@ public class Circle extends Shape{
      */
     public void draw(WinPlotter plotter) {
         //TODO
+        final int PRECISION = 1000;
+        super.setPenColor(plotter);
+
+        double angle = 0;
+        double angleStep = 2 * (Math.PI) / PRECISION;
+        double x;
+        double y;
+        plotter.moveTo(this.x + radius, this.y);
+        for (int i = 0; i <= PRECISION; i++) {
+            x = radius * Math.cos(angle);
+            y = radius * Math.sin(angle);
+            plotter.drawTo(this.x + x, this.y + y);
+            angle += angleStep;
+        }
     }
 }

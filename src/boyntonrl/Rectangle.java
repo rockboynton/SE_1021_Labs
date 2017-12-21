@@ -36,6 +36,12 @@ public class Rectangle extends Shape {
      */
     public void draw(WinPlotter plotter) {
         //TODO
+        super.setPenColor(plotter);
+        plotter.moveTo(x, y);
+        plotter.drawTo(x + width, y);
+        plotter.drawTo(x + width, y + height);
+        plotter.drawTo(x, y + height);
+        plotter.drawTo(x, y);
     }
 
 }

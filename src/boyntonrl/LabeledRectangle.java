@@ -34,5 +34,7 @@ public class LabeledRectangle extends Rectangle {
      */
     public void draw(WinPlotter plotter) {
         // TODO
+        super.draw(plotter);
+        plotter.printAt(width/2 + x, height/2 + y, name);
     }
 }

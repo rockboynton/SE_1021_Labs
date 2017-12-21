@@ -33,6 +33,7 @@ public class LabeledTriangle extends Triangle {
      * @param plotter reference to a WinPlotter object used for drawing
      */
     public void draw(WinPlotter plotter) {
-        // TODO
+        super.draw(plotter);
+        plotter.printAt(base/2 + x, y, name);
     }
 }

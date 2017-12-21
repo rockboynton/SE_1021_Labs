@@ -16,7 +16,7 @@ public abstract class Shape {
 
     /**
      * Constructor initializes Shape attributes.
-     * @param x cartesian x-origin of this Shap
+     * @param x cartesian x-origin of this Shape
      * @param y cartesian x-origin of this Shape
      * @param color the java.awt.Color for this Shape
      */
@@ -30,7 +30,7 @@ public abstract class Shape {
      * Sets the color of the shape
      * @param color the color to set
      */
-    public void setColor(java.awt.Color color) {
+    public void setColor(Color color) {
         this.color = color;
     }
 
@@ -39,15 +39,17 @@ public abstract class Shape {
      * @param plotter reference to a WinPlotter whose pen color should be set
      */
     public void setPenColor(WinPlotter plotter) {
-        //TODO
+        int red = color.getRed();
+        int green = color.getGreen();
+        int blue = color.getBlue();
+        plotter.setPenColor(red, green, blue);
     }
 
     /**
      * Draws the Shape. Abstract, so implementation deferred to sub classes
      * @param plotter reference to a WinPlotter object used for drawing
      */
-    public abstract void draw(edu.msoe.se1010.winPlotter.WinPlotter plotter);
-
+    public abstract void draw(WinPlotter plotter);
 
 }
 
