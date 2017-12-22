@@ -1,3 +1,11 @@
+/*
+ * SE1021 - 021
+ * Winter 2017
+ * Lab: Lab 4 Inheritance with Shapes
+ * Name: Rock Boynton
+ * Created: 12/20/17
+ */
+
 package boyntonrl;
 
 import edu.msoe.se1010.winPlotter.WinPlotter;
