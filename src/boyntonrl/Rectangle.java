@@ -46,7 +46,6 @@ public class Rectangle extends Shape {
      * @param plotter reference to a WinPlotter object used for drawing
      */
     public void draw(WinPlotter plotter) {
-        //TODO
         super.setPenColor(plotter);
         plotter.moveTo(x, y);
         plotter.drawTo(x + width, y);
